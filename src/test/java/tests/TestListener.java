@@ -40,7 +40,9 @@ public class TestListener implements ITestListener {
     private byte[] takeScreenshot(ITestResult iTestResult) {
         try {
             return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
-        } catch (NoSuchSessionException | IllegalStateException ex) {
+        }catch (NoSuchSessionException ex) {
+            return null;
+        } catch (IllegalStateException ex) {
             return null;
         }
     }
