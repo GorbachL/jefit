@@ -12,6 +12,8 @@ public class LoginPage extends BasePage {
     private static final String PASSWORD_CSS = "#navbar_password";
     private static final String LOGIN_BUTTON_CSS = ".loginblueButton1";
 
+    private static final String TOOLBAR_CSS = "#navbarSupportedContent";
+
 
     public LoginPage openPage() {
         open(URL);
@@ -27,6 +29,7 @@ public class LoginPage extends BasePage {
         $(USER_NAME_CSS).sendKeys(username);
         $(PASSWORD_CSS).sendKeys(password);
         $(LOGIN_BUTTON_CSS).click();
+        $(TOOLBAR_CSS).shouldBe(Condition.visible);
         return this;
     }
 }
