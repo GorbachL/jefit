@@ -9,6 +9,6 @@ public class LoginTest extends BaseTest {
     @Test
     public void logIn() {
         loginSteps
-                .login("lenagmailinator", "qwerty12345");
+                .login(prop.get("username"), prop.get("password"));
     }
 }

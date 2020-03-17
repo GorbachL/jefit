@@ -5,12 +5,14 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import steps.LoginSteps;
+import utils.PropertyManager;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 @Listeners(TestListener.class)
 public class BaseTest {
 
+    PropertyManager prop;
     LoginSteps loginSteps;
 
     @BeforeClass
@@ -21,8 +23,13 @@ public class BaseTest {
         loginSteps = new LoginSteps();
     }
 
-//    @AfterMethod(alwaysRun = true)
-//    public void closeBrowser() {
-//        getWebDriver().quit();
-//    }
+    @BeforeClass
+    public void loadProperties() {
+        prop = new PropertyManager();
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void closeBrowser() {
+        getWebDriver().quit();
+    }
 }
