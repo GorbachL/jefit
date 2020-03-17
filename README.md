@@ -1,4 +1,4 @@
-#Чекист по тестированию
+#Чеклист по тестированию
 
 > Routine Manager page
 1. Create New Routine
