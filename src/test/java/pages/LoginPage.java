@@ -1,10 +1,13 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import lombok.extern.log4j.Log4j2;
+import utils.AllureUtils;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
+@Log4j2
 public class LoginPage extends BasePage {
 
     private static final String URL = "https://www.jefit.com/login/";
@@ -26,10 +29,14 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage login(String username, String password) {
+        AllureUtils.takeScreenshot(getWebDriver());
         $(USER_NAME_CSS).sendKeys(username);
         $(PASSWORD_CSS).sendKeys(password);
+        AllureUtils.takeScreenshot(getWebDriver());
         $(LOGIN_BUTTON_CSS).click();
+        log.info("User logged in");
         $(TOOLBAR_CSS).shouldBe(Condition.visible);
+        AllureUtils.takeScreenshot(getWebDriver());
         return this;
     }
 }
