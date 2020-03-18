@@ -4,6 +4,8 @@ import com.codeborne.selenide.Configuration;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
+import pages.HomePage;
+import steps.HomePageSteps;
 import steps.LoginSteps;
 import utils.PropertyManager;
 
@@ -14,13 +16,14 @@ public class BaseTest {
 
     PropertyManager prop;
     LoginSteps loginSteps;
+    HomePageSteps homePageSteps;
 
     @BeforeClass
     public void setupDriver() {
-        //Configuration.headless = true;
         Configuration.startMaximized = true;
         Configuration.timeout = 20000;
         loginSteps = new LoginSteps();
+        homePageSteps = new HomePageSteps();
     }
 
     @BeforeClass

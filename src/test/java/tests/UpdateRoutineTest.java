@@ -1,0 +1,17 @@
+package tests;
+
+import org.testng.annotations.Test;
+
+public class UpdateRoutineTest extends BaseTest {
+
+    @Test
+    public void editRoutineTest() {
+        loginSteps
+                .login(prop.get("username"), prop.get("password"));
+        homePageSteps
+                .verifyHomePageIsOpen()
+                .openMyRoutinesTab()
+                .openRoutineManagerTab()
+                .updateRoutine();
+    }
+}

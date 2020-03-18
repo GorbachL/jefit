@@ -15,9 +15,6 @@ public class LoginPage extends BasePage {
     private static final String PASSWORD_CSS = "#navbar_password";
     private static final String LOGIN_BUTTON_CSS = ".loginblueButton1";
 
-    private static final String TOOLBAR_CSS = "#navbarSupportedContent";
-
-
     public LoginPage openPage() {
         open(URL);
         isPageOpened();
@@ -35,8 +32,6 @@ public class LoginPage extends BasePage {
         AllureUtils.takeScreenshot(getWebDriver());
         $(LOGIN_BUTTON_CSS).click();
         log.info("User logged in");
-        $(TOOLBAR_CSS).shouldBe(Condition.visible);
-        AllureUtils.takeScreenshot(getWebDriver());
         return this;
     }
 }
