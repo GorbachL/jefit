@@ -117,6 +117,14 @@ public class HomePage extends BasePage {
         AllureUtils.takeScreenshot(getWebDriver());
     }
 
+    public void addCommentToStatus(String comment) {
+        refresh();
+        $(ADD_COMMENT_BUTTON).click();
+        $(WRITE_COMMENT_INPUT).val(comment);
+        $(SEND_COMMENT_BUTTON).click();
+        log.info("Comment is sent");
+        AllureUtils.takeScreenshot(getWebDriver());
+    }
 
 
 }
