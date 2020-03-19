@@ -2,15 +2,14 @@ package tests;
 
 import org.testng.annotations.Test;
 
-public class UpdateStatusTest extends BaseTest {
+public class PostStatusTest extends BaseTest {
 
     @Test
-    public void updateStatusTest() {
+    public void postStatusTest() {
         loginSteps
                 .login(prop.get("username"), prop.get("password"));
         homePageSteps
                 .verifyHomePageIsOpen()
-                .postStatus()
-                .updateStatus();
+                .postStatus();
     }
 }

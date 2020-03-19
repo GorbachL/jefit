@@ -1,6 +1,8 @@
 package steps;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import pages.HomePage;
 
 public class HomePageSteps {
@@ -33,23 +35,42 @@ public class HomePageSteps {
     }
 
     @Step("Create New Routine")
-    public HomePageSteps createNewRoutine() {
+    public void createNewRoutine() {
         homePage
                 .createNewRoutine();
-        return this;
     }
 
-    @Step("Update Cretaed Routine")
-    public HomePageSteps updateRoutine() {
+    @Step("Update Created Routine")
+    public void updateRoutine() {
         homePage
                 .updateCreatedRoutine();
+    }
+
+    @Step("Post Status")
+    public HomePageSteps postStatus() {
+        String status = "My Status";
+        homePage
+                .postStatus(status);
         return this;
     }
 
     @Step("Update Status")
-    public HomePageSteps updateStatus() {
+    public void updateStatus() {
+        String status = "My Status UPDATED";
         homePage
-                .updateStatus();
-        return this;
+                .updateStatus(status);
+    }
+
+    @Step("Delete Status")
+    public void deleteStatus() {
+        homePage
+                .deleteStatus();
+    }
+
+    @Step("Add comment")
+    public void addComment() {
+        String comment = "My Comment";
+        homePage
+                .addCommentToStatus(comment);
     }
 }
