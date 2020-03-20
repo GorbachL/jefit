@@ -5,12 +5,13 @@ import org.testng.annotations.Test;
 public class EditCustomExerciseTest extends BaseTest {
 
     @Test
-    public void editCustomExersiceTest() {
+    public void editCustomExerciseTest() {
         loginSteps
                 .login(prop.get("username"), prop.get("password"));
         homePageSteps
                 .verifyHomePageIsOpen()
-                .openMyCustomExercises()
+                .openMyCustomExercises();
+        exerciseSteps
                 .createCustomExercise()
                 .editCustomExercise();
     }

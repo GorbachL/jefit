@@ -10,7 +10,9 @@ public class CreateCustomExerciseTest extends BaseTest {
                 .login(prop.get("username"), prop.get("password"));
         homePageSteps
                 .verifyHomePageIsOpen()
-                .openMyCustomExercises()
+                .openMyCustomExercises();
+        exerciseSteps
+                .verifyExerciseIsOpen()
                 .createCustomExercise();
     }
 }

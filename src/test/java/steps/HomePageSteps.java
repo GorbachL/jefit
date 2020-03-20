@@ -19,43 +19,16 @@ public class HomePageSteps {
     }
 
     @Step("Open My Routines")
-    public HomePageSteps openMyRoutinesTab() {
+    public void openMyRoutinesTab() {
         homePage
                 .openMyRoutines();
-        return this;
-    }
-
-    @Step("Open Routine Manager")
-    public HomePageSteps openRoutineManagerTab() {
-        homePage
-                .openRoutineManagerTab();
-        return this;
-    }
-
-    @Step("Create New Routine")
-    public void createNewRoutine() {
-        homePage
-                .createNewRoutine();
-    }
-
-    @Step("Update Created Routine")
-    public void updateRoutine() {
-        homePage
-                .updateCreatedRoutine();
     }
 
     @Step("Post Status")
     public HomePageSteps postStatus() {
-        String status = "My Status";
+        String status = "My New Status";
         homePage
                 .postStatus(status);
-        return this;
-    }
-
-    @Step("Set Current Routine")
-    public HomePageSteps setAsCurrent() {
-        homePage
-                .setAsCurrentRoutine();
         return this;
     }
 
@@ -67,25 +40,9 @@ public class HomePageSteps {
     }
 
     @Step("Open My Custom Exercises")
-    public HomePageSteps openMyCustomExercises() {
+    public void openMyCustomExercises() {
         homePage
                 .openMyExercises();
-        return this;
-    }
-
-    @Step("Create Custom Exercise")
-    public HomePageSteps createCustomExercise() {
-        String exerciseName = "My Exercise";
-        homePage
-                .createMyCustomExercise(exerciseName);
-        return this;
-    }
-
-    @Step("Edit Custom Exercise")
-    public void editCustomExercise() {
-        String exerciseName = "Edited Exercise";
-        homePage
-                .editMyCustomExercise(exerciseName);
     }
 
     @Step("Delete Status")
@@ -95,9 +52,9 @@ public class HomePageSteps {
     }
 
     @Step("Delete All Statuses")
-    public void deleteAllStatus() {
+    public void deleteAllStatuses() {
         homePage
-                .deleteAllStatus();
+                .deleteAllStatuses();
     }
 
     @Step("Add comment")

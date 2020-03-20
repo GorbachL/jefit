@@ -10,7 +10,8 @@ public class CreateNewRoutineTest extends BaseTest {
                 .login(prop.get("username"), prop.get("password"));
         homePageSteps
                 .verifyHomePageIsOpen()
-                .openMyRoutinesTab()
+                .openMyRoutinesTab();
+        routineSteps
                 .openRoutineManagerTab()
                 .createNewRoutine();
     }

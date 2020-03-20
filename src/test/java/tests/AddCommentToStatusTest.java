@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class AddCommentToStatusTest extends BaseTest {
 
-    @Test(enabled = false)
+    @Test
     public void addCommentToStatusTest() {
         loginSteps
                 .login(prop.get("username"), prop.get("password"));

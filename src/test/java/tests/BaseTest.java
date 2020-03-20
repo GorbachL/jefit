@@ -4,9 +4,10 @@ import com.codeborne.selenide.Configuration;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
-import pages.HomePage;
+import steps.ExerciseSteps;
 import steps.HomePageSteps;
 import steps.LoginSteps;
+import steps.RoutineSteps;
 import utils.PropertyManager;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -17,6 +18,8 @@ public class BaseTest {
     PropertyManager prop;
     LoginSteps loginSteps;
     HomePageSteps homePageSteps;
+    ExerciseSteps exerciseSteps;
+    RoutineSteps routineSteps;
 
     @BeforeClass
     public void setupDriver() {
@@ -24,6 +27,8 @@ public class BaseTest {
         Configuration.timeout = 20000;
         loginSteps = new LoginSteps();
         homePageSteps = new HomePageSteps();
+        exerciseSteps = new ExerciseSteps();
+        routineSteps = new RoutineSteps();
     }
 
     @BeforeClass
