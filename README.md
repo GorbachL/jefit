@@ -8,11 +8,12 @@
 > Status
 5. Post Status +
 6. Update Status +
-7. Delete Status +
-8. Add Comment to Status +
+7. Delete Status +/--
+8. Delete All Statuses +/--
+8. Add Comment to Status +/--
 > My Custom Exercise
-9. Create Custom Exercise
-10. Edit Custom Exercises
+9. Create Custom Exercise +
+10. Edit Custom Exercises +
 11. Delete Custom Exercises
 
 

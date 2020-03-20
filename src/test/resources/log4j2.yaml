@@ -23,8 +23,5 @@ Configuration:
       level: INFO
       AppenderRef:
         - ref: consoleAppender
-<<<<<<< HEAD
           level: INFO
-=======
-        level: INFO
->>>>>>> remotes/origin/master
+

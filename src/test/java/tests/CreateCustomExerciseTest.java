@@ -2,15 +2,15 @@ package tests;
 
 import org.testng.annotations.Test;
 
-public class AddCommentToStatusTest extends BaseTest {
+public class CreateCustomExerciseTest extends BaseTest {
 
-    @Test(enabled = false)
-    public void addCommentToStatusTest() {
+    @Test
+    public void createCustomExerciseTest() {
         loginSteps
                 .login(prop.get("username"), prop.get("password"));
         homePageSteps
                 .verifyHomePageIsOpen()
-                .postStatus()
-                .addComment();
+                .openMyCustomExercises()
+                .createCustomExercise();
     }
 }
