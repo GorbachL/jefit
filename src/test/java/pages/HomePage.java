@@ -13,7 +13,7 @@ public class HomePage extends BasePage {
 
     private static final String TOOLBAR_CSS = "#navbarSupportedContent";
     private static final String MY_ROUTINES = ".leftList li > a[href*='my-routines']";
-    private static final String ROUTINE_MANAGER = "a[href*='routine-manager']";
+    private static final String ROUTINE_MANAGER = ".nav-item > a[href*='routine-manager']";
     private static final String STATUS_INPUT = "#statusinputbox";
     private static final String STATUS_POST = "[value=Post]";
     private static final String STATUS_TEXT = "#statusText";
@@ -61,14 +61,6 @@ public class HomePage extends BasePage {
         log.info("New Status is Posted");
         AllureUtils.takeScreenshot(getWebDriver());
         refresh();
-        $(ADD_COMMENT_BUTTON).scrollTo().click();
-        $(ADD_COMMENT_BUTTON).click();
-        log.info("comment button");
-        $(WRITE_COMMENT_INPUT).val("comment");
-        log.info("Comment");
-        $(SEND_COMMENT_BUTTON).scrollTo().click();
-        log.info("send");
-        AllureUtils.takeScreenshot(getWebDriver());
     }
 
     public void updateStatus(String statusUpdated) {
@@ -84,14 +76,23 @@ public class HomePage extends BasePage {
     public void addCommentToStatus(String comment) {
         refresh();
         int countOfComment = $(COMMENT_TREE).$$(COMMENT_CELL).size();
-        $(ADD_COMMENT_BUTTON).scrollTo().click();
-        //$(ADD_COMMENT_BUTTON).click();
-        log.info("Add comment button is clicked");
-        AllureUtils.takeScreenshot(getWebDriver());
-        $(WRITE_COMMENT_INPUT).scrollTo().click();
-        $(WRITE_COMMENT_INPUT).val(comment);
-        log.info("Comment is entered");
-        AllureUtils.takeScreenshot(getWebDriver());
+
+        if ($(ADD_COMMENT_BUTTON).isDisplayed()) {
+            $(WRITE_COMMENT_INPUT).scrollTo().click();
+            $(WRITE_COMMENT_INPUT).val(comment);
+            log.info("Comment is entered in IF");
+            AllureUtils.takeScreenshot(getWebDriver());
+        } else {
+            $(ADD_COMMENT_BUTTON).scrollTo().click();
+            $(ADD_COMMENT_BUTTON).click();
+            log.info("Add comment button is clicked");
+            AllureUtils.takeScreenshot(getWebDriver());
+            $(WRITE_COMMENT_INPUT).scrollTo().click();
+            $(WRITE_COMMENT_INPUT).val(comment);
+            log.info("Comment is entered in ELSE");
+            AllureUtils.takeScreenshot(getWebDriver());
+        }
+
         $(SEND_COMMENT_BUTTON).scrollTo().click();
         //$(SEND_COMMENT_BUTTON).click();
         $(COMMENT_TREE).$$(COMMENT_CELL).shouldHaveSize(countOfComment);
