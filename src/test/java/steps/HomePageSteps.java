@@ -45,22 +45,17 @@ public class HomePageSteps {
                 .openMyExercises();
     }
 
-    @Step("Delete Status")
-    public void deleteStatus() {
-        homePage
-                .deleteStatus();
-    }
-
-    @Step("Delete All Statuses")
-    public void deleteAllStatuses() {
-        homePage
-                .deleteAllStatuses();
-    }
-
     @Step("Add comment")
-    public void addComment() {
+    public HomePageSteps addComment() {
         String comment = "My Comment";
         homePage
                 .addCommentToStatus(comment);
+        return this;
+    }
+
+    @Step("Delete Comment")
+    public void deleteComment() {
+        homePage
+                .deleteComment();
     }
 }

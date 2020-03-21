@@ -1,20 +1,18 @@
 #Чеклист по тестированию
 
+> Home Page
+1. Post Status 
+2. Update Status 
+3. Add Comment  
+4. Delete Comment 
+> My Custom Exercise Page
+5. Create Custom Exercise 
+6. Create Custom Exercise 
+7. Edit Custom Exercises 
 > Routine Manager 
-1. Create New Routine +
-2. Set as Current (created Routine)
-3. Edit Routine +
-4. Stored Routines
-> Status
-5. Post Status +
-6. Update Status +
-7. Delete Status +/--
-8. Delete All Statuses +/--
-8. Add Comment to Status +/--
-> My Custom Exercise
-9. Create Custom Exercise +
-10. Edit Custom Exercises +
-11. Delete Custom Exercises
+8. Create New Routine 
+9. Set as Current Routine
+10. Update Routine 
 
 
 

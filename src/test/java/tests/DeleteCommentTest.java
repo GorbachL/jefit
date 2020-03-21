@@ -2,15 +2,16 @@ package tests;
 
 import org.testng.annotations.Test;
 
-public class DeleteStatusTest extends BaseTest {
+public class DeleteCommentTest extends BaseTest {
 
     @Test
-    public void deleteStatusTest() {
+    public void deleteCommentTest() {
         loginSteps
                 .login(prop.get("username"), prop.get("password"));
         homePageSteps
                 .verifyHomePageIsOpen()
                 .postStatus()
-                .deleteStatus();
+                .addComment()
+                .deleteComment();
     }
 }

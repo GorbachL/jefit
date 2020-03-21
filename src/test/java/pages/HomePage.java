@@ -2,10 +2,7 @@ package pages;
 
 
 import com.codeborne.selenide.*;
-import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
 import utils.AllureUtils;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -20,7 +17,7 @@ public class HomePage extends BasePage {
     private static final String STATUS_INPUT = "#statusinputbox";
     private static final String STATUS_POST = "[value=Post]";
     private static final String STATUS_TEXT = "#statusText";
-    private static final String STATUS_DELETE = ".row .col.text-right";
+    private static final String COMMENT_DELETE = ".commentcell.row.mx-0 .commentcell2.col-10.pl-1";
     private static final String ADD_COMMENT_BUTTON = ".fa.fa-comment";
     private static final String WRITE_COMMENT_INPUT = "[name=feedcomment]";
     private static final String SEND_COMMENT_BUTTON = "[value=Send]";
@@ -28,7 +25,7 @@ public class HomePage extends BasePage {
     private static final String MY_CUSTOM_EXERCISES = ".leftList a[href*='my-exercises']";
     private static final String EXERCISES_NAME = "[name=newename]";
     private static final String COMMENT_TREE = ".threecomments";
-    private static final String COMMENT_CELL = ".commentcell2";
+    private static final String COMMENT_CELL = ".commentcell.row.mx-0 .commentcell2.col-10.pl-1";
 
     public HomePage openPage() {
         isPageOpened();
@@ -75,39 +72,35 @@ public class HomePage extends BasePage {
         AllureUtils.takeScreenshot(getWebDriver());
     }
 
-    public void deleteStatus() {
-        refresh();
-        $(STATUS_DELETE).hover();
-        $(STATUS_DELETE).click();
-        refresh();
-        $(COMMENT_TREE);
-        log.info("Status is deleted");
-        AllureUtils.takeScreenshot(getWebDriver());
-    }
-
-    public void deleteAllStatuses() {
-        $(COOKIALERT).click();
-        if ($(STATUS_DELETE).hover().exists()) {
-            do {
-                $(STATUS_DELETE).click();
-                refresh();
-            } while ($(STATUS_DELETE).exists());
-        }
-        log.info("All statuses are deleted");
-        AllureUtils.takeScreenshot(getWebDriver());
-    }
-
     public void addCommentToStatus(String comment) {
         refresh();
-        $(ADD_COMMENT_BUTTON).click();
+        int countOfComment = $(COMMENT_TREE).$$(COMMENT_CELL).size();
+        $(ADD_COMMENT_BUTTON).scrollTo().click();
         $(ADD_COMMENT_BUTTON).click();
         log.info("Add comment button is clicked");
+        AllureUtils.takeScreenshot(getWebDriver());
         $(WRITE_COMMENT_INPUT).scrollTo().click();
         $(WRITE_COMMENT_INPUT).val(comment);
         log.info("Comment is entered");
+        AllureUtils.takeScreenshot(getWebDriver());
         $(SEND_COMMENT_BUTTON).scrollTo();
         $(SEND_COMMENT_BUTTON).click();
+        $(COMMENT_TREE).$$(COMMENT_CELL).shouldHaveSize(countOfComment);
         log.info("Comment is sent");
+        AllureUtils.takeScreenshot(getWebDriver());
+    }
+
+    public void deleteComment() {
+        refresh();
+        int countOfComment = $$(COMMENT_CELL).size();
+        AllureUtils.takeScreenshot(getWebDriver());
+        $(COMMENT_CELL).scrollTo().hover();
+        $(COMMENT_CELL).hover();
+        $(COMMENT_DELETE).hover().click();
+        AllureUtils.takeScreenshot(getWebDriver());
+        refresh();
+        $$(COMMENT_CELL).shouldHaveSize(countOfComment);
+        log.info("Comment is deleted");
         AllureUtils.takeScreenshot(getWebDriver());
     }
 }

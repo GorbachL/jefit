@@ -7,7 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import models.Exercise;
 import utils.AllureUtils;
 
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 @Log4j2
@@ -19,6 +19,7 @@ public class ExercisePage extends BasePage {
     private static final String SAVE_BUTTON = "[name=Submit]";
     private static final String EDIT = "a[href*='action=edit']";
     private static final String COOKIALERT = ".btn.btn-primary.btn-sm.acceptcookies";
+    private static final String MY_CUSTOM_EXERCISES_LIST = "hor-minimalist_3";
 
     public ExercisePage openPage() {
         isPageOpened();
