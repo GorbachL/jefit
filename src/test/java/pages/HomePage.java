@@ -60,6 +60,15 @@ public class HomePage extends BasePage {
         $(STATUS_TEXT).shouldBe(Condition.text(status));
         log.info("New Status is Posted");
         AllureUtils.takeScreenshot(getWebDriver());
+        refresh();
+        $(ADD_COMMENT_BUTTON).scrollTo().click();
+        $(ADD_COMMENT_BUTTON).click();
+        log.info("comment button");
+        $(WRITE_COMMENT_INPUT).val("comment");
+        log.info("Comment");
+        $(SEND_COMMENT_BUTTON).scrollTo().click();
+        log.info("send");
+        AllureUtils.takeScreenshot(getWebDriver());
     }
 
     public void updateStatus(String statusUpdated) {
@@ -76,15 +85,15 @@ public class HomePage extends BasePage {
         refresh();
         int countOfComment = $(COMMENT_TREE).$$(COMMENT_CELL).size();
         $(ADD_COMMENT_BUTTON).scrollTo().click();
-        $(ADD_COMMENT_BUTTON).click();
+        //$(ADD_COMMENT_BUTTON).click();
         log.info("Add comment button is clicked");
         AllureUtils.takeScreenshot(getWebDriver());
         $(WRITE_COMMENT_INPUT).scrollTo().click();
         $(WRITE_COMMENT_INPUT).val(comment);
         log.info("Comment is entered");
         AllureUtils.takeScreenshot(getWebDriver());
-        $(SEND_COMMENT_BUTTON).scrollTo();
-        $(SEND_COMMENT_BUTTON).click();
+        $(SEND_COMMENT_BUTTON).scrollTo().click();
+        //$(SEND_COMMENT_BUTTON).click();
         $(COMMENT_TREE).$$(COMMENT_CELL).shouldHaveSize(countOfComment);
         log.info("Comment is sent");
         AllureUtils.takeScreenshot(getWebDriver());

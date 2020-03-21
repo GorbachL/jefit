@@ -11,7 +11,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 public class RoutinePage extends BasePage {
 
 
-    private static final String ROUTINE_MANAGER = "a[href*='routine-manager']";
+    private static final String ROUTINE_MANAGER = ".nav-item > a[href*='routine-manager']";
     private static final String CREATE_NEW_ROUTINE_BUTTON = "a[href*='action=create']";
     private static final String SET_AS_CURRENT_BUTTON = "a[href*='action=setcurrent']";
     private static final String SAVE_BUTTON = "[name=Submit]";
