@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class DeleteCommentTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"regression"})
     public void deleteCommentTest() {
         loginSteps
                 .login(prop.get("username"), prop.get("password"));

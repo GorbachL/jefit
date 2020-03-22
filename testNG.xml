@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="tests" parallel="classes" verbose="1">
+    <test
+            name="/Users/alenahorbach/Desktop/jefit/src/test/java/tests">
+
+        <groups>
+            <run>
+                <include name="init"/>
+                <exclude name="regression"/>
+                <include name="data"/>
+            </run>
+        </groups>
+
+        <packages>
+            <package name="tests"/>
+        </packages>
+
+        <classes>
+            <class name="tests.BaseTest">
+                <methods>
+                    <include name="setupDriver"/>
+                    <include name="loadProperties"/>
+                    <include name="closeBrowser"/>
+                </methods>
+            </class>
+            <class name="tests.LoginTest">
+                <methods>
+                    <include name="logIn"/>
+                </methods>
+            </class>
+            <class name="tests.AddCommentToStatusTest">
+                <methods>
+                    <exclude name="addCommentToStatusTest"/>
+                </methods>
+            </class>
+            <class name="tests.CreateCustomExerciseTest">
+                <methods>
+                    <include name="createCustomExerciseTest"/>
+                </methods>
+            </class>
+            <class name="tests.CreateExerciseUsingBuilderTest">
+                <methods>
+                    <include name="createExerciseUsingBuilderTest"/>
+                </methods>
+            </class>
+            <class name="tests.CreateNewRoutineTest">
+                <methods>
+                    <include name="createNewRoutineTest"/>
+                </methods>
+            </class>
+            <class name="tests.DeleteCommentTest">
+                <methods>
+                    <exclude name="deleteCommentTest"/>
+                </methods>
+            </class>
+            <class name="tests.EditCustomExerciseTest">
+                <methods>
+                    <include name="editCustomExerciseTest"/>
+                </methods>
+            </class>
+            <class name="tests.PostStatusTest">
+                <methods>
+                    <include name="postStatusTest"/>
+                </methods>
+            </class>
+            <class name="tests.SetAsCurrentRoutineTest">
+                <methods>
+                    <include name="setAsCurrentRoutineTest"/>
+                </methods>
+            </class>
+            <class name="tests.UpdateRoutineTest">
+                <methods>
+                    <include name="editRoutineTest"/>
+                </methods>
+            </class>
+            <class name="tests.UpdateStatusTest">
+                <methods>
+                    <include name="updateStatusTest"/>
+                </methods>
+            </class>
+        </classes>
+
+    </test>
+</suite>

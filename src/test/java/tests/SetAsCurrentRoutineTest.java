@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class SetAsCurrentRoutineTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"init"})
     public void setAsCurrentRoutineTest() {
         loginSteps
                 .login(prop.get("username"), prop.get("password"));

@@ -5,6 +5,8 @@ import com.codeborne.selenide.*;
 import lombok.extern.log4j.Log4j2;
 import utils.AllureUtils;
 
+import java.util.stream.Stream;
+
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -25,7 +27,9 @@ public class HomePage extends BasePage {
     private static final String MY_CUSTOM_EXERCISES = ".leftList a[href*='my-exercises']";
     private static final String EXERCISES_NAME = "[name=newename]";
     private static final String COMMENT_TREE = ".threecomments";
-    private static final String COMMENT_CELL = ".commentcell.row.mx-0 .commentcell2.col-10.pl-1";
+    private static final String COMMENT_CELL = ".commentcell.row.mx-0";
+    private static final String COMMENT_COUNT = ".col-12";
+
 
     public HomePage openPage() {
         isPageOpened();
@@ -75,16 +79,20 @@ public class HomePage extends BasePage {
 
     public void addCommentToStatus(String comment) {
         refresh();
-        int countOfComment = $(COMMENT_TREE).$$(COMMENT_CELL).size();
+        sleep(1000);
+        int count = Stream.of($$(COMMENT_COUNT)).mapToInt(m -> m.size()).sum();
+        System.out.println(count);
 
-        if ($(ADD_COMMENT_BUTTON).isDisplayed()) {
+        if ($(WRITE_COMMENT_INPUT).isDisplayed()) {
+            $(ADD_COMMENT_BUTTON).click();
+            $(ADD_COMMENT_BUTTON).click();
             $(WRITE_COMMENT_INPUT).scrollTo().click();
             $(WRITE_COMMENT_INPUT).val(comment);
             log.info("Comment is entered in IF");
             AllureUtils.takeScreenshot(getWebDriver());
         } else {
             $(ADD_COMMENT_BUTTON).scrollTo().click();
-            $(ADD_COMMENT_BUTTON).click();
+            $(ADD_COMMENT_BUTTON).doubleClick();
             log.info("Add comment button is clicked");
             AllureUtils.takeScreenshot(getWebDriver());
             $(WRITE_COMMENT_INPUT).scrollTo().click();
@@ -94,23 +102,29 @@ public class HomePage extends BasePage {
         }
 
         $(SEND_COMMENT_BUTTON).scrollTo().click();
-        //$(SEND_COMMENT_BUTTON).click();
-        $(COMMENT_TREE).$$(COMMENT_CELL).shouldHaveSize(countOfComment);
         log.info("Comment is sent");
         AllureUtils.takeScreenshot(getWebDriver());
+
+        $$(COMMENT_COUNT).shouldHaveSize((count + 2));
+        System.out.println(count + 2);
     }
 
     public void deleteComment() {
         refresh();
-        int countOfComment = $$(COMMENT_CELL).size();
+        sleep(1000);
+        int count = Stream.of($$(COMMENT_COUNT)).mapToInt(m -> m.size()).sum();
+        System.out.println(count);
         AllureUtils.takeScreenshot(getWebDriver());
         $(COMMENT_CELL).scrollTo().hover();
-        $(COMMENT_CELL).hover();
         $(COMMENT_DELETE).hover().click();
+        $(COMMENT_DELETE).click();
+        sleep(1000);
         AllureUtils.takeScreenshot(getWebDriver());
         refresh();
-        $$(COMMENT_CELL).shouldHaveSize(countOfComment);
+        AllureUtils.takeScreenshot(getWebDriver());
         log.info("Comment is deleted");
         AllureUtils.takeScreenshot(getWebDriver());
+        $$(COMMENT_COUNT).shouldHaveSize((count - 2));
+        System.out.println(count - 2);
     }
 }
