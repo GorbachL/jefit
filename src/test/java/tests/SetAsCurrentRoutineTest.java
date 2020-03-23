@@ -2,10 +2,10 @@ package tests;
 
 import org.testng.annotations.Test;
 
-public class UpdateRoutineTest extends BaseTest {
+public class SetAsCurrentRoutineTest extends BaseTest {
 
-    @Test(description = "edit routine", groups = {"init"})
-    public void editRoutineTest() {
+    @Test(description = "setAsCurrent", groups = {"init"})
+    public void setAsCurrentRoutineTest() {
         loginSteps
                 .login(prop.get("username"), prop.get("password"));
         homePageSteps
@@ -14,6 +14,6 @@ public class UpdateRoutineTest extends BaseTest {
         routineSteps
                 .openRoutineManagerTab()
                 .createNewRoutine()
-                .updateRoutine();
+                .setAsCurrent();
     }
 }
