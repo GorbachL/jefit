@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class CreateExerciseUsingBuilderTest extends BaseTest {
 
-    @Test(groups = {"init"})
+    @Test(description = "Custom Exercise Using Builder", groups = {"init"})
     public void createExerciseUsingBuilderTest() {
         Exercise exercise = Exercise.builder()
                 .majorMuscleGroup("6")

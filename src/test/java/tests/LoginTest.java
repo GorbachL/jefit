@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 @Log4j2
 public class LoginTest extends BaseTest {
 
-    @Test(groups = {"init"})
+    @Test(description = "login test", groups = {"init"})
     public void logIn() {
         loginSteps
                 .login(prop.get("username"), prop.get("password"));

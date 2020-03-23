@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class UpdateRoutineTest extends BaseTest {
 
-    @Test(groups = {"init"})
+    @Test(description = "edit routine", groups = {"init"})
     public void editRoutineTest() {
         loginSteps
                 .login(prop.get("username"), prop.get("password"));

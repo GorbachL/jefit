@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class CreateCustomExerciseTest extends BaseTest {
 
-    @Test(groups = {"init"})
+    @Test(description = "Custom Exercise", groups = {"init"})
     public void createCustomExerciseTest() {
         loginSteps
                 .login(prop.get("username"), prop.get("password"));
