@@ -92,7 +92,7 @@ public class HomePage extends BasePage {
             AllureUtils.takeScreenshot(getWebDriver());
         } else {
             $(ADD_COMMENT_BUTTON).scrollTo().click();
-            $(ADD_COMMENT_BUTTON).doubleClick();
+            $(ADD_COMMENT_BUTTON).click();
             log.info("Add comment button is clicked");
             AllureUtils.takeScreenshot(getWebDriver());
             $(WRITE_COMMENT_INPUT).scrollTo().click();
@@ -116,7 +116,9 @@ public class HomePage extends BasePage {
         System.out.println(count);
         AllureUtils.takeScreenshot(getWebDriver());
         $(COMMENT_CELL).scrollTo().hover();
+        $(COMMENT_CELL).click();
         $(COMMENT_DELETE).hover().click();
+        $(COMMENT_DELETE).click();
         $(COMMENT_DELETE).click();
         sleep(1000);
         AllureUtils.takeScreenshot(getWebDriver());
