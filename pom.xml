@@ -18,8 +18,7 @@
                     <forkCount>2</forkCount>
                     <reuseForks>true</reuseForks>
                     <argLine>
-                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.1/aspectjweaver-1.9.1.jar
-                        -Xmx256m
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.1/aspectjweaver-1.9.1.jar -Xmx256m
                     </argLine>
                     <useSystemClassLoader>false</useSystemClassLoader>
                 </configuration>
@@ -34,6 +33,10 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
+                <configuration>
+                    <reportVersion>2.4.1</reportVersion>
+                    <reportDirectory>target/site</reportDirectory>
+                </configuration>
                 <version>2.10.0</version>
             </plugin>
             <plugin>
